@@ -735,6 +735,18 @@ namespace ClassicUO.Network
         }
     }
 
+    internal sealed class PTargetSerial : PacketWriter
+    {
+        public PTargetSerial(uint serial, uint cursorID, byte cursorType) : base(0x6C)
+        {
+            WriteByte(0x00);
+            WriteUInt(cursorID);
+            WriteByte(cursorType);
+            WriteUInt(serial);
+            WriteByte(0xFF);
+        }
+    }
+
     internal sealed class PTargetXYZ : PacketWriter
     {
         public PTargetXYZ(ushort x, ushort y, short z, ushort modelNumber, uint cursorID, byte targetType) : base(0x6C)
