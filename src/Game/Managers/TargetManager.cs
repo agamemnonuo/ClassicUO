@@ -336,6 +336,11 @@ namespace ClassicUO.Game.Managers
                         return;
                 }
             }
+            else
+            {
+                NetClient.Socket.Send(new PTargetSerial(serial, _targetCursorId, (byte)TargetingType));
+                ClearTargetingWithoutTargetCancelPacket();
+            }
         }
 
         public static void Target(ushort graphic, ushort x, ushort y, short z, bool wet = false)
